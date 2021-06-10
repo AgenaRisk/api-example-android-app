@@ -28,6 +28,9 @@ public class AgenaRiskHelper {
                 "-Pcom.agenarisk.logger.level=10"   // Use this line if you want to turn debug level up
         });
 
+        // Use this line for debug output
+        Logger.initDefaults();
+
         String pathProduct = Config.getDirectoryAgenaRiskProduct() + File.separator + "product.json";
         File fileProduct = new File(pathProduct);
         fileProduct.getParentFile().mkdirs();

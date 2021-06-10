@@ -28,13 +28,15 @@ public class Example2 extends Example {
         super(parent);
     }
 
-    public void run() {
+    public void runTask() {
         appendLines(
                 "Example 2",
                 "Using AgenaRisk Java API, copy a CMPX model (exported from AgenaRisk Desktop as JSON) from file packed with the application to a temp file, load the model from the file, set some observations (including a node variable), calculate, print data points and summary statistics JSON",
                 "");
 
         refreshText();
+
+        showSpinner();
 
         try {
             File file = AgenaRiskHelper.copyTemp("/Car Costs.json", ".json");
@@ -65,7 +67,7 @@ public class Example2 extends Example {
             Node nodeTotalCost = network.getNode("total_cost");
 
             String results = dataSet.getCalculationResult(nodeTotalCost).toJson().toString(2);
-            appendLines(results);
+            appendLines(results,"");
         }
         catch (IOException | ModelException ex){
             appendLines("Failed to copy and load model file");
@@ -79,6 +81,8 @@ public class Example2 extends Example {
         }
 
         refreshText();
+
+        hideSpinner();
     }
 
 }

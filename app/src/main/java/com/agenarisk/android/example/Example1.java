@@ -18,13 +18,15 @@ public class Example1 extends Example {
         super(parent);
     }
 
-    public void run() {
+    public void runTask() {
         appendLines(
                 "Example 1",
                 "Using AgenaRisk Java API, create new model with a simulation node and calculate, then print data points and summary statistics JSON",
                 "");
 
         refreshText();
+
+        showSpinner();
 
         try {
             Model model = Model.createModel();
@@ -43,7 +45,7 @@ public class Example1 extends Example {
                     "");
 
             String results = model.getDataSetList().get(0).getCalculationResult(node).toJson().toString(2);
-            appendLines(results);
+            appendLines(results,"");
         }
         catch(Exception ex){
             appendLines(ex.getClass() + " " +ex.getMessage());
@@ -51,5 +53,7 @@ public class Example1 extends Example {
         }
 
         refreshText();
+
+        hideSpinner();
     }
 }
