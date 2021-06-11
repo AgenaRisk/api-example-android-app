@@ -22,7 +22,10 @@ public abstract class Example {
     public final void run(){
         Thread thread = new Thread() {
             public void run() {
-                runTask();
+                synchronized (Runtime.getRuntime()) {
+                    // AgenaRisk is not thread-safe so only run one job at a time
+                    runTask();
+                }
             }
         };
         thread.start();
