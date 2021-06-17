@@ -29,6 +29,12 @@ android {
 }
 
 repositories {
+    maven {
+        url 'http://mvn.agenarisk.com/repository/internal/'
+    }
+    maven {
+        url 'http://mvn.agenarisk.com/repository/snapshots/'
+    }
     mavenLocal()
     mavenCentral()
 }
@@ -40,6 +46,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    implementation 'com.agenarisk:com.agenarisk.api:0.983-SNAPSHOT'
+    implementation 'com.agenarisk:com.agenarisk.api:0.984'
 }
 
